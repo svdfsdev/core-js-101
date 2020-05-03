@@ -202,8 +202,35 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  let result = '';
+
+  for (let i = 1; i <= height; i += 1) {
+    if (i === 1) {
+      result += '┌';
+    } else if (i !== 1 && i !== height) {
+      result += '│';
+    } else {
+      result += '└';
+    }
+
+    for (let j = 1; j <= width - 2; j += 1) {
+      if (i === 1 || i === height) {
+        result += '─';
+      } else {
+        result += ' ';
+      }
+    }
+
+    if (i === 1) {
+      result += '┐\n';
+    } else if (i !== 1 && i !== height) {
+      result += '│\n';
+    } else {
+      result += '┘\n';
+    }
+  }
+  return result;
 }
 
 
@@ -223,12 +250,27 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const dictinary = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let result = '';
+
+  for (let i = 0; i < str.length; i += 1) {
+    const code = dictinary.indexOf(str[i], 0);
+
+    if (code === -1) {
+      result += str[i];
+    } else if (code < 13 || (code < 39 && code >= 26)) {
+      result += dictinary[code + 13];
+    } else {
+      result += dictinary[code - 13];
+    }
+  }
+
+  return result;
 }
 
 /**
- * Returns true if the value is string; otherwise false.
+ *  Returns true if the value is string; otherwise false.
  * @param {string} value
  * @return {boolean}
  *
