@@ -32,7 +32,7 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  throw new Error('Not implemented');
+  return /{\d[\d\w]{7}-[\d\w]{4}-[\d\w]{4}-[\d\w]{4}-[\d\w]{12}}/;
 }
 
 
