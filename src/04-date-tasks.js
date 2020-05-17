@@ -87,7 +87,7 @@ function timeSpanToString(startDate, endDate) {
  *
  * SMALL TIP: convert to radians just once, before return in order to not lost precision
  *
- * @param {date} date
+ * @param {date} daten
  * @return {number}
  *
  * @example:
